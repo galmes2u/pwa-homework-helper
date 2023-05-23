@@ -2,7 +2,7 @@
 
 ## Before anything else
 
-Do NOT include this README file in your submission! Also, you are supposed clone this repo for reference purposes only. Create a brand new repo for the homework, and then copy the files here into it (except for Assets, which isn't needed).
+You can use a clone of this repo for your homework submission, but do NOT include this README file in your submission! .The Assets folder in the repo root is for this README file only; you don't to submit it.
 
 ## Instructions
 
@@ -31,7 +31,7 @@ In each file you will see TODO items in the comments. I've tried to give some ad
 
 - Notice also a script named "start:dev". It uses a node package called concurrently to start up both your server and client environments at the same time when you are in development. So to test locally, just run `npm start:dev`.
 
-- When you want to test how this will work in production, run `npm start`. Notice that this script then runs a build script in the client environment. In the client/package.json file, you'll see that the build script invokes webpack, and from there Webpack does its thing.
+- When you want to test how this will work in production, run `npm start`. Notice that this script then runs a build script in the client environment. In the *client/package.json* file, you'll see that the build script invokes Webpack, and from there Webpack does its thing.
 
 ## How to Test
 
@@ -44,7 +44,10 @@ If you need to start from scratch and remove the existing PWA:
 - Close the standalone browser window containing the PWA
 - Delete the PWA from your hard drive 
 - Kill the server session running in VS Code 
-- In Chrome, go to localhost:3000, the app may or may not open again. If it does, open up the dev console, go to Application -> Service Works and click the Unregister Worker link.
+- In Chrome, go to localhost:3000, the app may or may not open again. If it does, open up the dev console, go to Application -> Service Workerss and click the **Unregister Worker** link.
+
+Everything below comes from the curriculum README.
+
 
 ## Mock-Up
 

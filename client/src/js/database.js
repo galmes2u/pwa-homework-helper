@@ -1,13 +1,19 @@
+/*
+  The idb package being required below provides some syntactic sugar around the methods needed to work with IndexedDB. Yes, the code you see below is actually a "prettier" version of what you would normally have to write. Be thankful. We've only been using the idb package since mid 2022. Before that students had to write this code with no helper methods. These students deserve a medal.
+*/
 import { openDB } from 'idb';
 
+// We will define a global constant for our database name so we don't mess it up anywhere
+const DB_NAME = "jate"
+
 const initdb = async () =>
-  openDB('jate', 1, {
+  openDB(DB_NAME, 1, {
     upgrade(db) {
-      if (db.objectStoreNames.contains('jate')) {
+      if (db.objectStoreNames.contains(DB_NAME)) {
         console.log('jate database already exists');
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
+      db.createObjectStore(DB_NAME, { keyPath: 'id', autoIncrement: true });
       console.log('jate database created');
     },
   });
@@ -17,17 +23,17 @@ const initdb = async () =>
 */
 export const putDb = async (content) => {
   // First, create a variable, and set it to asyncronously await the opening of the database. Replace the items in all caps
-  const DB_VAR = await openDB('DB_NAME', 1);
+  
+  // TODO: Change YOUR_OPEN_DB_VAR to whatever variable name you wanT. Note that you'll then need to change any other occcurences of YOUR_OPEN_DB_VAR to the same variable name.
+  const YOUR_OPEN_DB_VAR = await openDB(DB_NAME, 1);
 
-  // Now create a variable for the transaction
-  const TX_VAR = jateDb.transaction('DB_NAME', 'readwrite');
+  // TODO: Now create a variable for the transaction; again, this will be referenced below.
+  const YOUR_TX_VAR = YOUR_OPEN_DB_VAR.transaction(DB_NAME, 'readwrite');
 
-  // Now create a variable for the store
-  const STORE_VAR = tx.objectStore('DB_NAME');
+  // TODO: Now create a variable for the store
+  const YOUR_STORE_VAR = YOUR_TX_VAR.objectStore(DB_NAME);
 
-  // Now create a variable named "request" and have it perform the update
-  const VAR_NAME = store.put({ id: 1, value: content });
-
+  const request = YOUR_STORE_VAR.put({ id: 1, value: content });
   const result = await request;
   console.log('🚀 - data saved to the database', result.value);
 };
@@ -36,9 +42,9 @@ export const putDb = async (content) => {
   We need to add some code below which will get all content from IndexedDB.
 */
 export const getDb = async () => {
-  // You can duplicate the same first lines of code from above, except that the transaction will be 'readonly'
+  // You can duplicate the same lines of code from above, except that the transaction will be 'readonly'
   
-  // LINES 1-3 HERE
+  // TODO: Copy LINES 28, 31 and 34 above; the new line 31 code should be "readonly"
 
   // Leave the rest as-is
   const request = store.get(1);
@@ -46,7 +52,7 @@ export const getDb = async () => {
   result
     ? console.log('🚀 - data retrieved from the database', result.value)
     : console.log('🚀 - data not found in the database');
-  // Check if a variable is defined and if it is, return it. See MDN Docs on Optional Chaining (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
   return result?.value;
 };
 

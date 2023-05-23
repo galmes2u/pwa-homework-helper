@@ -77,7 +77,7 @@ module.exports = () => {
           for when Webpack should "bundle-ize" our files. Each rule 
           is an object. We will be setting up two rules. 
           
-          You will find both rules in the solutiom for the mini 
+          You will find both rules in the solution for the mini 
           project. 
 
           When you copy and paste them below, you'll be done here.

@@ -31,7 +31,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 /*
   TODO:
 
-  In the package.json for this assignment you'll see a dependecy named 
+  In the package.json for this assignment you'll see a dependency named 
   'workbox-webpack-plugin'. We use a subset of this component to intercept 
   routes to our app and return a cached version if no Internet connection 
   is available.
